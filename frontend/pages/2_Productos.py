@@ -82,8 +82,8 @@ def api_eliminar_producto(id):
 
 st.markdown("""
 <div class="page-header">
-    <h1 style="margin:0; color:#1E3A5F;">📋 Gestión de Productos</h1>
-    <p style="margin:0.3rem 0 0; color:#718096; font-size:0.9rem;">
+    <h1 style="margin:0; text-transform:uppercase; background: linear-gradient(90deg, #FFF, #8E939C); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">📋 Gestión de Productos</h1>
+    <p style="margin:0.3rem 0 0; color:#8E939C; font-size:0.95rem;">
         Crear, visualizar, editar y eliminar productos del inventario
     </p>
 </div>
@@ -129,7 +129,7 @@ with tab_lista:
     elif not productos:
         st.info("No se encontraron productos con los filtros aplicados.")
     else:
-        st.markdown(f"<p style='color:#718096; font-size:0.85rem;'>Mostrando <strong>{len(productos)}</strong> producto(s)</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color:#8E939C; font-size:0.85rem;'>Mostrando <strong style='color:#CAFA04;'>{len(productos)}</strong> producto(s)</p>", unsafe_allow_html=True)
 
         df = pd.DataFrame(productos)
 

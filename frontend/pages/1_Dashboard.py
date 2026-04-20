@@ -41,9 +41,9 @@ def fetch_bajo_stock():
         return None, str(e)
 
 PALETA = [
-    "#2E86AB", "#1E3A5F", "#3BB273", "#F4A259",
-    "#E84855", "#8338EC", "#06A77D", "#FF6B6B",
-    "#4ECDC4", "#45B7D1"
+    "#CAFA04", "#00E5FF", "#FF2E63", "#7D5FFF",
+    "#00F5D4", "#FEE440", "#F15BB5", "#9B5DE5",
+    "#38B000", "#FF9900"
 ]
 
 # ─────────────────────────────────────────────────
@@ -52,8 +52,8 @@ PALETA = [
 
 st.markdown("""
 <div class="page-header">
-    <h1 style="margin:0; color:#1E3A5F;">📊 Dashboard</h1>
-    <p style="margin:0.3rem 0 0; color:#718096; font-size:0.9rem;">
+    <h1 style="margin:0; text-transform:uppercase; background: linear-gradient(90deg, #FFF, #8E939C); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">📊 Dashboard Analítico</h1>
+    <p style="margin:0.3rem 0 0; color:#8E939C; font-size:0.95rem;">
         Indicadores clave y visualizaciones en tiempo real
     </p>
 </div>
@@ -115,10 +115,15 @@ with col5:
 
 if stats.get("producto_mas_valioso"):
     st.markdown(f"""
-    <div style="background:#EBF8FF; border:1px solid #BEE3F8; border-radius:8px;
-                padding:0.7rem 1rem; margin:0.8rem 0; font-size:0.9rem; color:#2C5282;">
-        🏆 <strong>Producto más valioso en inventario:</strong> {stats['producto_mas_valioso']}
-        &nbsp;·&nbsp; S/ {float(stats.get('valor_producto_top', 0)):,.2f}
+    <div style="background:rgba(202,250,4,0.05); border:1px solid rgba(202,250,4,0.2); border-radius:12px;
+                padding:1rem; margin:1rem 0; font-size:1rem; color:#FFF; display:flex; gap:0.5rem; align-items:center;">
+        <span style="font-size:1.5rem; text-shadow:0 0 10px rgba(202,250,4,0.5);">🏆</span> 
+        <div>
+            <strong style="color:var(--accent-glow); text-transform:uppercase; font-family:'Syne',sans-serif; letter-spacing:0.05em;">Producto Star:</strong> 
+            {stats['producto_mas_valioso']}
+            &nbsp;<span style="color:#8E939C;">|</span>&nbsp; 
+            <span style="color:#00E5FF; font-weight:700;">S/ {float(stats.get('valor_producto_top', 0)):,.2f}</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -145,7 +150,7 @@ if cat_data:
             orientation="h",
             marker=dict(
                 color=top10["total_productos"],
-                colorscale=[[0, "#BEE3F8"], [1, "#1E3A5F"]],
+                colorscale=[[0, "rgba(0,229,255,0.2)"], [1, "#00E5FF"]],
                 showscale=False
             ),
             text=top10["total_productos"],
@@ -155,10 +160,10 @@ if cat_data:
         fig_bar.update_layout(
             height=350,
             margin=dict(l=10, r=30, t=10, b=10),
-            plot_bgcolor="white",
-            paper_bgcolor="white",
-            font=dict(family="Inter", size=12),
-            xaxis=dict(gridcolor="#EDF2F7", gridwidth=1),
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Outfit", size=12, color="#FFFFFF"),
+            xaxis=dict(gridcolor="rgba(255,255,255,0.05)", gridwidth=1),
             yaxis=dict(gridcolor="rgba(0,0,0,0)")
         )
         st.plotly_chart(fig_bar, use_container_width=True)
@@ -170,21 +175,21 @@ if cat_data:
             labels=df_cat["categoria"],
             values=df_cat["valor_inventario"],
             hole=0.45,
-            marker=dict(colors=PALETA[:len(df_cat)]),
+            marker=dict(colors=PALETA[:len(df_cat)], line=dict(color="#0a0b10", width=2)),
             textinfo="percent+label",
-            textfont=dict(size=10),
+            textfont=dict(size=12, color="#FFF"),
             hovertemplate="<b>%{label}</b><br>S/ %{value:,.2f}<br>%{percent}<extra></extra>"
         ))
         fig_pie.update_layout(
             height=350,
             margin=dict(l=10, r=10, t=10, b=10),
-            paper_bgcolor="white",
-            font=dict(family="Inter", size=11),
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Outfit", size=12, color="#FFFFFF"),
             showlegend=False,
             annotations=[dict(
                 text="Valor<br>Inv.",
                 x=0.5, y=0.5,
-                font=dict(size=11, color="#718096"),
+                font=dict(family="Syne", size=14, color="#CAFA04", weight="bold"),
                 showarrow=False
             )]
         )
@@ -196,19 +201,19 @@ if cat_data:
     fig_val = px.bar(
         df_sorted, x="categoria", y="valor_inventario",
         color="valor_inventario",
-        color_continuous_scale=["#BEE3F8", "#2E86AB", "#1E3A5F"],
+        color_continuous_scale=["rgba(202,250,4,0.1)", "#CAFA04"],
         labels={"categoria": "Categoría", "valor_inventario": "Valor (S/)"},
         text_auto=".2s"
     )
-    fig_val.update_traces(textfont_size=10, textangle=0, textposition="outside")
+    fig_val.update_traces(textfont_size=11, textfont_color="#FFF", textangle=0, textposition="outside")
     fig_val.update_layout(
         height=300,
         margin=dict(l=10, r=10, t=10, b=10),
-        plot_bgcolor="white",
-        paper_bgcolor="white",
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
         coloraxis_showscale=False,
-        font=dict(family="Inter"),
-        yaxis=dict(gridcolor="#EDF2F7"),
+        font=dict(family="Outfit", color="#FFF"),
+        yaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
         xaxis=dict(title=None)
     )
     st.plotly_chart(fig_val, use_container_width=True)

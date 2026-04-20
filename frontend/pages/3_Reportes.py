@@ -68,8 +68,8 @@ def fetch_categorias():
 
 st.markdown("""
 <div class="page-header">
-    <h1 style="margin:0; color:#1E3A5F;">📄 Reportes</h1>
-    <p style="margin:0.3rem 0 0; color:#718096; font-size:0.9rem;">
+    <h1 style="margin:0; text-transform:uppercase; background: linear-gradient(90deg, #FFF, #8E939C); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">📄 Reportes</h1>
+    <p style="margin:0.3rem 0 0; color:#8E939C; font-size:0.95rem;">
         Generación de informes profesionales en formato PDF
     </p>
 </div>
@@ -89,20 +89,20 @@ rep1_col, rep2_col = st.columns(2)
 
 with rep1_col:
     st.markdown("""
-    <div class="card" style="border-top: 4px solid #2E86AB; min-height: 160px;">
+    <div class="card" style="border-top: 2px solid var(--accent-cyber); min-height: 160px; background:var(--surface-glass);">
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
-            <span style="font-size:1.8rem;">📦</span>
+            <span style="font-size:1.8rem; filter:drop-shadow(0 0 10px rgba(0,229,255,0.4));">📦</span>
             <div>
-                <h3 style="margin:0; color:#1E3A5F; font-size:1rem;">Reporte Operacional</h3>
-                <p style="margin:0; color:#718096; font-size:0.8rem;">Listado del Inventario Actual</p>
+                <h3 style="margin:0; color:#FFF; font-size:1rem; text-transform:uppercase; letter-spacing:1px;">Reporte Operacional</h3>
+                <p style="margin:0; color:#8E939C; font-size:0.8rem;">Listado del Inventario Actual</p>
             </div>
         </div>
-        <p style="color:#4A5568; font-size:0.85rem; margin-bottom:0.5rem;">
+        <p style="color:#A0AEC0; font-size:0.85rem; margin-bottom:0.5rem; line-height:1.5;">
             Tabla detallada de todos los productos con SKU, nombre, stock, precios y valor total.
             Puede filtrarse por categoría antes de generar.
         </p>
-        <div style="font-size:0.78rem; color:#718096;">
-            📋 Incluye: tabla de productos · resumen estadístico · KPIs
+        <div style="font-size:0.78rem; color:#8E939C; background:rgba(0,0,0,0.3); padding:0.4rem; border-radius:4px; margin-top:0.5rem;">
+            <strong style="color:var(--accent-cyber);">INCLUYE:</strong> tabla de productos · resumen estadístico · KPIs
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -154,20 +154,20 @@ with rep1_col:
 
 with rep2_col:
     st.markdown("""
-    <div class="card" style="border-top: 4px solid #E84855; min-height: 160px;">
+    <div class="card" style="border-top: 2px solid var(--accent-danger); min-height: 160px; background:var(--surface-glass);">
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
-            <span style="font-size:1.8rem;">📊</span>
+            <span style="font-size:1.8rem; filter:drop-shadow(0 0 10px rgba(255,46,99,0.4));">📊</span>
             <div>
-                <h3 style="margin:0; color:#1E3A5F; font-size:1rem;">Reporte de Gestión</h3>
-                <p style="margin:0; color:#718096; font-size:0.8rem;">Análisis de Inventario y Bajo Stock</p>
+                <h3 style="margin:0; color:#FFF; font-size:1rem; text-transform:uppercase; letter-spacing:1px;">Reporte de Gestión</h3>
+                <p style="margin:0; color:#8E939C; font-size:0.8rem;">Análisis de Inventario y Bajo Stock</p>
             </div>
         </div>
-        <p style="color:#4A5568; font-size:0.85rem; margin-bottom:0.5rem;">
+        <p style="color:#A0AEC0; font-size:0.85rem; margin-bottom:0.5rem; line-height:1.5;">
             Informe estratégico con KPIs del tablero, distribución por categoría y
             lista completa de productos que requieren reorden urgente.
         </p>
-        <div style="font-size:0.78rem; color:#718096;">
-            📊 Incluye: KPIs · análisis por categoría · tabla de bajo stock
+        <div style="font-size:0.78rem; color:#8E939C; background:rgba(0,0,0,0.3); padding:0.4rem; border-radius:4px; margin-top:0.5rem;">
+            <strong style="color:var(--accent-danger);">INCLUYE:</strong> KPIs · análisis por categoría · tabla de bajo stock
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -214,11 +214,15 @@ with rep2_col:
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown("""
-<div style="background:#F7FAFC; border:1px solid #E2E8F0; border-radius:10px;
-            padding:1rem 1.25rem; font-size:0.85rem; color:#4A5568;">
-    <strong style="color:#1E3A5F;">ℹ Acerca de los reportes</strong><br>
-    Los PDFs se generan con <strong>ReportLab</strong> y están diseñados para impresión y distribución profesional.
-    El Reporte de Inventario usa orientación <em>horizontal (landscape)</em> para mejor legibilidad.
-    El Análisis Estratégico usa orientación <em>vertical (portrait)</em> estándar A4.
+<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:10px;
+            padding:1.5rem; font-size:0.85rem; color:#A0AEC0;">
+    <strong style="color:#FFF; font-family:'Syne',sans-serif; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.5rem;">
+        <span style="color:var(--accent-glow);">INFO</span> Acerca de los reportes
+    </strong>
+    Los PDFs se generan dinámicamente utilizando el motor <strong>ReportLab</strong>, diseñados con estética profesional de alto contraste.
+    <ul style="margin-top:0.5rem; margin-bottom:0; padding-left:1.2rem;">
+        <li><strong>Reporte Operacional:</strong> Orientación <em>horizontal (landscape)</em>.</li>
+        <li><strong>Reporte de Gestión:</strong> Orientación <em>vertical (portrait)</em> formato A4 estándar.</li>
+    </ul>
 </div>
 """, unsafe_allow_html=True)
