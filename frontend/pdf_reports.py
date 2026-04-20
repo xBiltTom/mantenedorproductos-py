@@ -257,7 +257,7 @@ def generar_reporte_analisis(
     buffer = io.BytesIO()
     doc = SimpleDocTemplate(
         buffer,
-        pagesize=A4,
+        pagesize=landscape(A4),
         rightMargin=1.8 * cm,
         leftMargin=1.8 * cm,
         topMargin=1.8 * cm,
@@ -303,7 +303,7 @@ def generar_reporte_analisis(
     elementos.append(Paragraph("2. Distribución por Categoría", styles["SeccionTitulo"]))
 
     cat_headers = ["Categoría", "Productos", "Stock Total", "Valor Inventario", "% del Total"]
-    cat_widths  = [5 * cm, 3 * cm, 3 * cm, 4.5 * cm, 3 * cm]
+    cat_widths  = [8 * cm, 4 * cm, 4 * cm, 6 * cm, 4 * cm]
     val_total   = sum(float(c.get("valor_inventario", 0)) for c in categorias)
 
     cat_header_row = [Paragraph(f"<b>{h}</b>", styles["CeldaTabla"]) for h in cat_headers]
@@ -358,7 +358,7 @@ def generar_reporte_analisis(
         ))
     else:
         bs_headers = ["SKU", "Producto", "Categoría", "Stock Actual", "Stock Mínimo", "Déficit", "Proveedor"]
-        bs_widths  = [2.5*cm, 5.5*cm, 3*cm, 2.5*cm, 2.5*cm, 2*cm, 4.5*cm]
+        bs_widths  = [3*cm, 7*cm, 4*cm, 3*cm, 3*cm, 2*cm, 4.1*cm]
 
         bs_header_row = [Paragraph(f"<b>{h}</b>", styles["CeldaTabla"]) for h in bs_headers]
         bs_rows = [bs_header_row]

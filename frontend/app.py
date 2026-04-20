@@ -237,6 +237,7 @@ section[data-testid="stSidebar"] .stRadio > label {
 #MainMenu { visibility: hidden; }
 footer    { visibility: hidden; }
 header    { visibility: hidden; }
+[data-testid="stSidebarNav"] { display: none !important; }
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"] {

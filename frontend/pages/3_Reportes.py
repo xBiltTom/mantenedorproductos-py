@@ -25,6 +25,7 @@ def fetch_productos(categoria=None):
     try:
         r = requests.get(f"{API_URL}/productos", params=params, timeout=10)
         r.raise_for_status()
+        r.encoding = 'utf-8'
         return r.json(), None
     except Exception as e:
         return None, str(e)
@@ -33,6 +34,7 @@ def fetch_stats():
     try:
         r = requests.get(f"{API_URL}/stats/dashboard", timeout=8)
         r.raise_for_status()
+        r.encoding = 'utf-8'
         return r.json(), None
     except Exception as e:
         return None, str(e)
@@ -41,6 +43,7 @@ def fetch_categorias_stats():
     try:
         r = requests.get(f"{API_URL}/stats/categorias", timeout=8)
         r.raise_for_status()
+        r.encoding = 'utf-8'
         return r.json(), None
     except Exception as e:
         return None, str(e)
@@ -49,6 +52,7 @@ def fetch_bajo_stock():
     try:
         r = requests.get(f"{API_URL}/stats/bajo-stock", timeout=8)
         r.raise_for_status()
+        r.encoding = 'utf-8'
         return r.json(), None
     except Exception as e:
         return None, str(e)
@@ -57,6 +61,7 @@ def fetch_categorias():
     try:
         r = requests.get(f"{API_URL}/productos/categorias", timeout=5)
         r.raise_for_status()
+        r.encoding = 'utf-8'
         return r.json()
     except:
         return []
