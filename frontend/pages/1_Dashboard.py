@@ -6,6 +6,15 @@ import requests
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+import sys
+import os
+
+# Importar configuración global
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from ui_utils import render_global_ui
+
+# Aplicar UI global (reemplaza Sidebar default y CSS)
+render_global_ui(page_title="Dashboard - Sistema de Gestión")
 
 API_URL = st.session_state.get("API_URL", "http://localhost:8000")
 

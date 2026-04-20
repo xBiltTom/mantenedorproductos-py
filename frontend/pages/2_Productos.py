@@ -5,6 +5,13 @@ import streamlit as st
 import requests
 import pandas as pd
 from datetime import datetime
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from ui_utils import render_global_ui
+
+render_global_ui(page_title="Productos - Sistema de Gestión")
 
 API_URL = st.session_state.get("API_URL", "http://localhost:8000")
 

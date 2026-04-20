@@ -7,9 +7,11 @@ import sys
 import os
 from datetime import datetime
 
-# Importar el generador de PDFs desde el directorio padre del frontend
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from pdf_reports import generar_reporte_inventario, generar_reporte_analisis
+from ui_utils import render_global_ui
+
+render_global_ui(page_title="Reportes - Sistema de Gestión")
 
 API_URL = st.session_state.get("API_URL", "http://localhost:8000")
 
